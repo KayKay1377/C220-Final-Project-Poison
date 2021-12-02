@@ -22,7 +22,7 @@ TBA
 ## Future Development
 Full Game
 
-# Created by: Group Name
-Jonah Lukin 
-Ryan McCaslin
-Guy Cart
+# Created by: Poison
+Jonah Lukin (Programming)
+Ryan McCaslin (Music)
+Guy Cart (Art)
