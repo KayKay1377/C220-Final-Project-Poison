@@ -15,7 +15,10 @@ Struggles or surprises you encountered during the development of the game
 
 ## Implementation
 Current Features: Menus
-Assets, or resources used: to be credited soon
+Assets, or resources used:
+Open Game Art: https://opengameart.org/art-search-advanced?keys=background&title=&field_art_tags_tid_op=or&field_art_tags_tid=&name=&field_art_type_tid%5B0%5D=9&sort_by=created&sort_order=DESC&items_per_page=24&Collection=&page=1
+
+Kenney NL Assets: https://www.kenney.nl/assets/generic-items
 
 ## References
 TBA
