@@ -18,6 +18,8 @@ func _unhandled_input(event):
 				menu.hide()
 				get_tree().paused = false
 
-func update_money():
+func update_money(m):
+	var money = int($HUD/Money.text)
+	money.text = str(m + money)
 	pass
 	
