@@ -1,8 +1,132 @@
-[gd_scene format=2]
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Assets/water-shader-1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/IMMORTAL.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/Evil Empire.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://UI/MainMenu.gd" type="Script" id=4]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float tile_factor = 6.0;
+uniform float aspect_ratio = 0.8;
+
+uniform vec2 time_factor = vec2(1.0, 2.0);
+uniform vec2 offset_factor = vec2(6.0, 5.0);
+uniform vec2 amplitude = vec2(0.05, 0.05);
+
+void fragment() {
+	vec2 tiled_uvs = UV * tile_factor;
+	tiled_uvs.y *= aspect_ratio;
+	
+	vec2 wave_uv_offset;
+	wave_uv_offset.x += sin(TIME * time_factor.x + (tiled_uvs.x + tiled_uvs.y) * offset_factor.x);
+	wave_uv_offset.y += cos(TIME * time_factor.y + (tiled_uvs.x + tiled_uvs.y) * offset_factor.y);
+	
+
+	COLOR = texture(TEXTURE, tiled_uvs + wave_uv_offset * amplitude);
+
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/tile_factor = 8.0
+shader_param/aspect_ratio = 0.9
+shader_param/time_factor = Vector2( 1, 2 )
+shader_param/offset_factor = Vector2( 6, 5 )
+shader_param/amplitude = Vector2( 0.01, 0.01 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id=10]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.498039, 0.00392157, 0.996078, 1 )
+draw_center = false
+shadow_color = Color( 1, 1, 1, 0.6 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 64
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id=11]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id=5]
+draw_center = false
+
+[sub_resource type="DynamicFont" id=6]
+size = 64
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 84
+font_data = ExtResource( 2 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Background Shader" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( 512, 300 )
+scale = Vector2( 16, 9.4 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="Start" type="Button" parent="."]
+margin_left = 392.0
+margin_top = 312.0
+margin_right = 632.0
+margin_bottom = 384.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.498039, 0.00392157, 0.996078, 1 )
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit" type="Button" parent="."]
+margin_left = 392.0
+margin_top = 388.0
+margin_right = 632.0
+margin_bottom = 460.0
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color = Color( 0.498039, 0.00392157, 0.996078, 1 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_top = 64.0
+margin_right = 1024.0
+margin_bottom = 136.0
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.698039, 0.564706, 0.509804, 1 )
+custom_colors/font_color_shadow = Color( 0.498039, 0.00392157, 0.996078, 1 )
+text = "Poison Profiteer"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
