@@ -17,3 +17,8 @@ func _unhandled_input(event):
 
 func update_money():
 	pass
+	
+	if $AudioStreamPlayer.playing == false:
+		$AudioStreamPlayer.play()
+		pass
+		
