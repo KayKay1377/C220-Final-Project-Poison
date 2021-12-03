@@ -82,7 +82,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="HUD"]
+[node name="Money" type="Label" parent="HUD"]
 margin_top = 4.0
 margin_right = 882.0
 margin_bottom = 52.0
