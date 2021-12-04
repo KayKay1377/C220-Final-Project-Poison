@@ -1,7 +1,9 @@
 extends Node
 
-var money = 0.00
+var money = 0
 var Money = null
+
+var Shop = null
 
 func _ready():
 	pause_mode = PAUSE_MODE_PROCESS
@@ -21,4 +23,7 @@ func update_money(m):
 	Money = get_node_or_null("/root/Game/HUD/Money")
 	if Money != null:
 		money += m
+		Money.text = "Money: $" + str(money)
+	Money = get_node_or_null("/root/Game/Shop/ShopHUD/Money")
+	if Money != null:
 		Money.text = "Money: $" + str(money)

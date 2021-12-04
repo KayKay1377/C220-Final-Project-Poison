@@ -22,3 +22,8 @@ func _on_Timer_timeout():
 func _on_Manufacture_pressed():
 	if(Timer.is_stopped()):
 		Timer.start()
+		
+func open_shop():
+	if(Global.Shop == 1):
+		var shop = get_node_or_null("PufferfishPoison")
+		shop.show()
