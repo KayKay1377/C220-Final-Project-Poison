@@ -1,11 +1,10 @@
 extends Node
 
+var money = 0.00
+var Money = null
+
 func _ready():
-	pause_mode =PAUSE_MODE_PROCESS
-	
-func _process(delta):
-	if $AudioStreamPlayer.playing == false:
-		$AudioStreamPlayer.play()
+	pause_mode = PAUSE_MODE_PROCESS
 
 func _unhandled_input(event):
 	if event.is_action_pressed("menu"):
@@ -19,7 +18,7 @@ func _unhandled_input(event):
 				get_tree().paused = false
 
 func update_money(m):
-	var money = int($HUD/Money.text)
-	money.text = str(m + money)
-	pass
-	
+	Money = get_node_or_null("/root/Game/HUD/Money")
+	if Money != null:
+		money += m
+		Money.text = "Money: $" + str(money)
