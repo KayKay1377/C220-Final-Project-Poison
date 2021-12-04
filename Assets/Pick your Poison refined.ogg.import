@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Pick your Poison refined.ogg-51cf603bf7dfe8f4c77eca63e199582c.oggstr"
+
+[deps]
+
+source_file="res://Assets/Pick your Poison refined.ogg"
+dest_files=[ "res://.import/Pick your Poison refined.ogg-51cf603bf7dfe8f4c77eca63e199582c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

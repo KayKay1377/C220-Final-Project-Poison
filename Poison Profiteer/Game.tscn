@@ -1,36 +1,54 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Assets/Evil Empire.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/PauseMenu.gd" type="Script" id=2]
 [ext_resource path="res://Assets/OldNewspaperTypes.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://UI/HUD.gd" type="Script" id=4]
 [ext_resource path="res://Global.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Pick your Poison refined.ogg" type="AudioStream" id=6]
+[ext_resource path="res://AudioStreamPlayer.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Dripping Water.wav" type="AudioStream" id=8]
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=1]
 size = 24
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=8]
+[sub_resource type="StyleBoxFlat" id=2]
 corner_radius_top_left = 45
 corner_radius_top_right = 45
 corner_radius_bottom_right = 45
 corner_radius_bottom_left = 45
 
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=3]
 corner_radius_top_left = 45
 corner_radius_top_right = 45
 corner_radius_bottom_right = 45
 corner_radius_bottom_left = 45
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=4]
 corner_radius_top_left = 45
 corner_radius_top_right = 45
 corner_radius_bottom_right = 45
 corner_radius_bottom_left = 45
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 20
 font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id=7]
+draw_center = false
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.498039, 0.00392157, 0.996078, 1 )
+draw_center = false
+shadow_color = Color( 1, 1, 1, 0.6 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 64
+font_data = ExtResource( 1 )
 
 [sub_resource type="StyleBoxFlat" id=10]
 draw_center = false
@@ -38,25 +56,10 @@ draw_center = false
 [sub_resource type="StyleBoxFlat" id=11]
 draw_center = false
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.498039, 0.00392157, 0.996078, 1 )
-draw_center = false
-shadow_color = Color( 1, 1, 1, 0.6 )
-
-[sub_resource type="DynamicFont" id=2]
-size = 64
-font_data = ExtResource( 1 )
-
 [sub_resource type="StyleBoxFlat" id=12]
 draw_center = false
 
-[sub_resource type="StyleBoxFlat" id=13]
-draw_center = false
-
-[sub_resource type="StyleBoxFlat" id=3]
-draw_center = false
-
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=13]
 size = 64
 font_data = ExtResource( 1 )
 
@@ -79,11 +82,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="HUD"]
+[node name="Money" type="Label" parent="HUD"]
 margin_top = 4.0
 margin_right = 882.0
 margin_bottom = 52.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 1 )
 text = "Money: "
 align = 2
 valign = 1
@@ -96,10 +99,10 @@ margin_left = 2.0
 margin_top = 4.0
 margin_right = 98.0
 margin_bottom = 51.0
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 text = "SHOP"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -125,10 +128,10 @@ margin_left = 392.0
 margin_top = 222.0
 margin_right = 632.0
 margin_bottom = 294.0
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 11 )
-custom_styles/normal = SubResource( 1 )
-custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 text = "Restart"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -139,14 +142,23 @@ margin_left = 392.0
 margin_top = 310.0
 margin_right = 632.0
 margin_bottom = 382.0
-custom_styles/hover = SubResource( 12 )
-custom_styles/pressed = SubResource( 13 )
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+custom_fonts/font = SubResource( 13 )
 text = "Quit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Music theme (Main)" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = 0.182
+
+[node name="dripping water" type="AudioStreamPlayer" parent="Music theme (Main)"]
+stream = ExtResource( 8 )
+volume_db = -4.0
+script = ExtResource( 7 )
 
 [connection signal="pressed" from="HUD/Shop" to="HUD" method="_on_Shop_pressed"]
 [connection signal="pressed" from="PauseMenu/Restart" to="PauseMenu" method="_on_Restart_pressed"]
