@@ -4,12 +4,22 @@
 [ext_resource path="res://Assets/background3.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Evil Empire.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://Assets/background1.png" type="Texture" id=4]
-[ext_resource path="res://Assets/poison8.png" type="Texture" id=5]
+[ext_resource path="res://Assets/poison9.png" type="Texture" id=5]
 [ext_resource path="res://Assets/IMMORTAL.ttf" type="DynamicFontData" id=6]
 
-[sub_resource type="DynamicFont" id=1]
-size = 19
+[sub_resource type="DynamicFont" id=5]
+size = 18
 font_data = ExtResource( 6 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0, 0, 1 )
+border_blend = true
+corner_radius_top_left = 30
+corner_radius_top_right = 30
 
 [sub_resource type="StyleBoxFlat" id=2]
 border_width_left = 2
@@ -31,17 +41,7 @@ border_blend = true
 corner_radius_top_left = 30
 corner_radius_top_right = 30
 
-[sub_resource type="StyleBoxFlat" id=4]
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0, 0, 0, 1 )
-border_blend = true
-corner_radius_top_left = 30
-corner_radius_top_right = 30
-
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 13
 font_data = ExtResource( 3 )
 
@@ -55,12 +55,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Bleach" type="Label" parent="."]
+[node name="Cyanide" type="Label" parent="."]
 margin_right = 300.0
 margin_bottom = 25.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Bleach"
+text = "Cyanide"
 align = 1
 valign = 2
 __meta__ = {
@@ -72,10 +72,10 @@ margin_left = 100.0
 margin_top = 70.0
 margin_right = 196.0
 margin_bottom = 90.0
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Manufacture"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -87,8 +87,8 @@ margin_top = 35.0
 margin_right = 309.0
 margin_bottom = 213.0
 rect_scale = Vector2( 0.803, 0.112 )
-max_value = 5.0
-value = 5.0
+max_value = 30.0
+value = 30.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 4 )
 fill_mode = 1
@@ -102,13 +102,13 @@ one_shot = true
 
 [node name="Icon" type="Sprite" parent="."]
 position = Vector2( 290, 45 )
-scale = Vector2( 0.6, 0.3 )
+scale = Vector2( 0.5, 0.4 )
 texture = ExtResource( 5 )
 
 [node name="Value" type="Label" parent="."]
 visible = false
 margin_bottom = 14.0
-text = "5"
+text = "30"
 
 [connection signal="pressed" from="Manufacture" to="." method="_on_Manufacture_pressed"]
 [connection signal="timeout" from="ProgressBar/Timer" to="." method="_on_Timer_timeout"]

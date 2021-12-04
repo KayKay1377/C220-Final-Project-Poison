@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Assets/Evil Empire.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/PauseMenu.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Assets/Pick your Poison refined.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Game.gd" type="Script" id=7]
 [ext_resource path="res://Assets/Dripping Water.wav" type="AudioStream" id=8]
+[ext_resource path="res://Poisons/Cyanide.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Poisons/Ricin.tscn" type="PackedScene" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -163,6 +165,16 @@ volume_db = -9.0
 margin_top = 100.0
 margin_right = 0.0
 margin_bottom = 100.0
+
+[node name="Manufacturing3" parent="." instance=ExtResource( 10 )]
+margin_top = 250.0
+margin_right = 0.0
+margin_bottom = 250.0
+
+[node name="Manufacturing2" parent="." instance=ExtResource( 9 )]
+margin_top = 400.0
+margin_right = 0.0
+margin_bottom = 400.0
 
 [connection signal="pressed" from="HUD/Shop" to="HUD" method="_on_Shop_pressed"]
 [connection signal="pressed" from="PauseMenu/Restart" to="PauseMenu" method="_on_Restart_pressed"]
