@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Assets/Evil Empire.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/PauseMenu.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Poisons/Bleach.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Pick your Poison refined.ogg" type="AudioStream" id=6]
 [ext_resource path="res://Game.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Dripping Water.wav" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -150,9 +151,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = 0.182
+
+[node name="WaterSFX" type="AudioStreamPlayer" parent="BGM"]
+stream = ExtResource( 8 )
+volume_db = -9.0
 
 [node name="Manufacturing" parent="." instance=ExtResource( 5 )]
 margin_top = 100.0

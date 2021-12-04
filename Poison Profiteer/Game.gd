@@ -1,5 +1,6 @@
 extends Node2D
 
 func _ready():
-	if $AudioStreamPlayer.playing == false:
-		$AudioStreamPlayer.play()
+	if $BGM.playing == false:
+		$BGM.play()
+		$BGM/WaterSFX.play()
